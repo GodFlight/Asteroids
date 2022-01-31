@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 5815031538018724724}
   - component: {fileID: 5815031538018724727}
   - component: {fileID: 5815031538018724726}
+  - component: {fileID: 7696947896794635872}
   m_Layer: 6
   m_Name: Ship
   m_TagString: Untagged
@@ -255,7 +256,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f6f8f29f168e84c89bbc221fdca878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultHealth: 3
+  _health: {fileID: 0}
   _weaponHolder: {fileID: 5815031537505239605}
   _rotationSpeed: 90
   _inertiaForce: 2
+--- !u!114 &7696947896794635872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5815031538018723976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f01db2dc80a7484883c8be6c162e6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3

@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Asteroids.Level
 {
+    [RequireComponent(typeof(AsteroidSpawner))]
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField]
         private AsteroidSpawner _asteroidSpawner;
 
         [SerializeField]
@@ -18,8 +19,14 @@ namespace Asteroids.Level
         [SerializeField]
         private int _maxAsteroidSpawnByPeriod = 4;
 
+        private void Awake()
+        {
+            _asteroidSpawner = GetComponent<AsteroidSpawner>();
+        }
+
         private void Start()
         {
+            _asteroidSpawner.Spawn(1);
             _asteroidSpawner.PereodicSpawn(_minAsteroidSpawnByPeriod, _maxAsteroidSpawnByPeriod, _minPeriodTime, _maxPeriodTime);
         }
 

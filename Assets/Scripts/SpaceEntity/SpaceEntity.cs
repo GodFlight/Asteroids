@@ -7,7 +7,6 @@ namespace Asteroids.SpaceEntity
     ,typeof(HealthComponent))]
     public abstract class SpaceEntity : MonoBehaviour, IDamageRecevier
     {
-        [SerializeField]
         protected HealthComponent _health;
         private const int BASE_DAMAGE = 1;
         

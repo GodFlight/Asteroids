@@ -39,8 +39,9 @@ namespace Asteroids.SpaceEntity
 
         private void Awake()
         {
-            _health.SetHealthToMax();
+            _health = GetComponent<HealthComponent>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _health.SetHealthToMax();
         }
         
         public void Initialize(Vector3 position, AsteroidState state = AsteroidState.Big)
