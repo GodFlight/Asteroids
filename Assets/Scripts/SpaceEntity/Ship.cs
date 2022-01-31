@@ -18,10 +18,9 @@ namespace Asteroids.SpaceEntity
         [SerializeField]
         private float _inertiaForce = 2f;
 
-        protected void Awake()
+        private void Awake()
         {
-            base.Awake();
-
+            _health = GetComponent<HealthComponent>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _weapon = _weaponHolder.GetComponent<IWeapon>();
         }
@@ -32,7 +31,7 @@ namespace Asteroids.SpaceEntity
             _rotationDirection = Input.GetKey(KeyCode.D) ? -1 : 0;
             _rotationDirection = Input.GetKey(KeyCode.A) ? 1 : _rotationDirection;
         
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
                 _weapon.Shoot(transform.up);
         }
 
@@ -51,6 +50,11 @@ namespace Asteroids.SpaceEntity
                 Mathf.Sin(-rad),
                 Mathf.Cos(rad)
             );
+        }
+
+        protected override void DestroyEntity()
+        {
+            GameManager.Reload();
         }
     }
 }

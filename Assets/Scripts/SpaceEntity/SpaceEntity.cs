@@ -3,22 +3,16 @@ using UnityEngine;
 
 namespace Asteroids.SpaceEntity
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D)
+    ,typeof(HealthComponent))]
     public abstract class SpaceEntity : MonoBehaviour, IDamageRecevier
     {
         [SerializeField]
-        private int _defaultHealth = 1;
-        protected int _currentHealth = 1;
-
+        protected HealthComponent _health;
         private const int BASE_DAMAGE = 1;
         
         public Action OnTakeDamage;
         public Action OnTriggerEnter;
-
-        protected void Awake()
-        {
-            SetHealthToDefault();
-        }
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
@@ -32,18 +26,13 @@ namespace Asteroids.SpaceEntity
         public void TakeDamage(int amount)
         {
             OnTakeDamage?.Invoke();
-            _currentHealth -= amount;
+            _health.AddHealth(-amount);
 
-            if (_currentHealth <= 0)
-                DestroySpaceEntity();
-        }
-        
-        public void SetHealthToDefault()
-        {
-            _currentHealth = _defaultHealth;
+            if (_health.CurrentHealth <= 0)
+                DestroyEntity();
         }
 
-        protected virtual void DestroySpaceEntity()
+        protected virtual void DestroyEntity()
         {
             Destroy(gameObject);
         }

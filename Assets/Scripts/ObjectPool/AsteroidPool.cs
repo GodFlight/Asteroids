@@ -15,7 +15,6 @@ namespace Asteroids.ObjectPool
                 {
                     GameObject @gameObject = new GameObject("Asteroid Pool");
                     _instance = @gameObject.AddComponent<AsteroidPool>();
-                    DontDestroyOnLoad(_instance.gameObject);
                 }
             
                 return _instance;

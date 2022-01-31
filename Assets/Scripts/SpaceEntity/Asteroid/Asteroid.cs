@@ -36,20 +36,18 @@ namespace Asteroids.SpaceEntity
                     AsteroidPool.Instance.GetObject().Initialize(position, AsteroidState.Little);
                 }
             };
-    
-        protected void Awake()
-        {
-            base.Awake();
 
+        private void Awake()
+        {
+            _health.SetHealthToMax();
             _rigidbody = GetComponent<Rigidbody2D>();
-            SetHealthToDefault();
         }
         
         public void Initialize(Vector3 position, AsteroidState state = AsteroidState.Big)
         {
             transform.position = position;
             _state = state;
-            SetHealthToDefault();
+            _health.SetHealthToMax();
 
             float size = state.ToSize(_config);
             transform.localScale = new Vector3(size, size, size); // need asteroidStateExtension (like state.ToSize())
@@ -57,7 +55,7 @@ namespace Asteroids.SpaceEntity
             _rigidbody.velocity = Random.insideUnitCircle.normalized * _speed;
         }
     
-        protected override void DestroySpaceEntity()
+        protected override void DestroyEntity()
         {
             if (_stateToAction.TryGetValue(_state, out var action))
                 action?.Invoke(transform.position);
