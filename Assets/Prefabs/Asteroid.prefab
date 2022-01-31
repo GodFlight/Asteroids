@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6342142255953625645}
   - component: {fileID: 6342142255953625634}
+  - component: {fileID: 4380402732370059802}
   m_Layer: 7
   m_Name: meteor
   m_TagString: Untagged
@@ -82,6 +83,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4380402732370059802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342142255953625644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc40bcc32cc4e07b3f5797d45236fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentToWrap: {fileID: 6342142256272797178}
 --- !u!1 &6342142256272797158
 GameObject:
   m_ObjectHideFlags: 0
