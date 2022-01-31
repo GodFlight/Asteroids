@@ -14,7 +14,7 @@ namespace Asteroids.SpaceEntity
         
         public Action OnTakeDamage;
         public Action OnTriggerEnter;
-    
+
         private void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.TryGetComponent(out IDamageRecevier damageRecevier))
@@ -31,6 +31,11 @@ namespace Asteroids.SpaceEntity
 
             if (_currentHealth <= 0)
                 DestroySpaceEntity();
+        }
+        
+        public void SetHealthToDefault()
+        {
+            _currentHealth = _defaultHealth;
         }
 
         protected virtual void DestroySpaceEntity()
