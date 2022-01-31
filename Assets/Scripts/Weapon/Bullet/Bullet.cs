@@ -1,7 +1,7 @@
 using Asteroids.SpaceEntity;
 using UnityEngine;
 
-namespace Asteroids.Bullet
+namespace Asteroids.Weapon
 {
     [RequireComponent(typeof(Rigidbody2D) , typeof(CircleCollider2D))]
     public class Bullet : MonoBehaviour, IBullet

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Asteroids.Bullet
+namespace Asteroids.Weapon
 {
     public interface IBullet
     {
