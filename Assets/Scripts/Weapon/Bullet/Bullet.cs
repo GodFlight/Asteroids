@@ -1,3 +1,5 @@
+using System.Collections;
+using Asteroids.ObjectPool;
 using Asteroids.SpaceEntity;
 using UnityEngine;
 
@@ -28,15 +30,22 @@ namespace Asteroids.Weapon
         public void SetupDirection(Vector3 direction)
         {
             _rigidbody.velocity = direction * _speed;
-            // Start lifetime coroutine which return bullet to object pool 
+            StartCoroutine(ReturnToObjectPoolAtEndOfLifeTime());
         }
-    
+
+        private IEnumerator ReturnToObjectPoolAtEndOfLifeTime()
+        {
+            yield return new WaitForSeconds(_lifeTime);
+            BulletPool.Instance.ReturnObject(this);
+        }
+        
         private void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.gameObject.TryGetComponent(out IDamageRecevier damageReceiver))
             {
                 damageReceiver.TakeDamage(_damage);
-                // return bullet to object pool and stop lifetime coroutine
+                StopAllCoroutines();
+                BulletPool.Instance.ReturnObject(this);
             }
         }
     }
