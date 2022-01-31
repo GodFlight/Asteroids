@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Asteroids.ObjectPool;
+using Asteroids.Configs;
+using Extensions.Asteroid;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +10,9 @@ namespace Asteroids.SpaceEntity
 {
     public class Asteroid : SpaceEntity
     {
+        [SerializeField]
+        private AsteroidConfig _config;
+
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
         [SerializeField]
@@ -43,8 +48,9 @@ namespace Asteroids.SpaceEntity
             transform.position = position;
             _state = state;
             SetHealthToDefault();
-            
-            transform.localScale = new Vector3(1f, 1f, 1f); // need asteroidStateExtension (like state.ToSize())
+
+            float size = state.ToSize(_config);
+            transform.localScale = new Vector3(size, size, size); // need asteroidStateExtension (like state.ToSize())
     
             _rigidbody.velocity = Random.insideUnitCircle.normalized * _speed;
         }
