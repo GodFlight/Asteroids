@@ -18,8 +18,10 @@ namespace Asteroids.SpaceEntity
         [SerializeField]
         private float _inertiaForce = 2f;
 
-        private void Awake()
+        protected void Awake()
         {
+            base.Awake();
+
             _rigidbody = GetComponent<Rigidbody2D>();
             _weapon = _weaponHolder.GetComponent<IWeapon>();
         }

@@ -15,6 +15,11 @@ namespace Asteroids.SpaceEntity
         public Action OnTakeDamage;
         public Action OnTriggerEnter;
 
+        protected void Awake()
+        {
+            SetHealthToDefault();
+        }
+
         private void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.TryGetComponent(out IDamageRecevier damageRecevier))

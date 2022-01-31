@@ -37,8 +37,10 @@ namespace Asteroids.SpaceEntity
                 }
             };
     
-        private void Awake()
+        protected void Awake()
         {
+            base.Awake();
+
             _rigidbody = GetComponent<Rigidbody2D>();
             SetHealthToDefault();
         }

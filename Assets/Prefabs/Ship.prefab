@@ -257,5 +257,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultHealth: 3
   _weaponHolder: {fileID: 5815031537505239605}
-  _rotationSpeed: 60
+  _rotationSpeed: 90
   _inertiaForce: 2
