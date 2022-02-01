@@ -51,7 +51,7 @@ namespace Asteroids.SpaceEntity
             _health.SetHealthToMax();
 
             float size = state.ToSize(_config);
-            transform.localScale = new Vector3(size, size, size); // need asteroidStateExtension (like state.ToSize())
+            transform.localScale = new Vector3(size, size, size);
     
             _rigidbody.velocity = Random.insideUnitCircle.normalized * _speed;
         }
