@@ -1,4 +1,5 @@
 using Asteroids.ObjectPool;
+using Asteroids.ScreenWrapper;
 using Asteroids.SpaceEntity;
 using Asteroids.Weapon;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class AppStartup : MonoBehaviour
     {
         BulletPool.Instance.BuildPool(_bulletPrefab, BulletPool.Instance.transform, _bulletsCount);
         AsteroidPool.Instance.BuildPool(_asteroidPrefab, AsteroidPool.Instance.transform, _asteroidsCount);
+        ScreenConfig.Initialize();
        
         Destroy(gameObject);
     }
